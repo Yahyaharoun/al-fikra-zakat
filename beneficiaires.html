@@ -35,17 +35,24 @@
 
 .btn-container{
   position:fixed;
-  bottom:80px;           /* hauteur au-dessus du footer */
+  bottom:80px;
   left:50%;
   transform:translateX(-50%);
   background:var(--accent);
-  color:white;
+  color:#ffffff !important;   /* Forcer texte blanc */
   padding:12px 28px;
   border-radius:30px;
   font-weight:bold;
+  text-align:center;
   box-shadow:0 6px 15px rgba(0,0,0,0.3);
   transition:0.3s;
   z-index:999;
+}
+
+.btn-container-fixed:hover{
+  background:#000000;          /* contraste fort */
+  color:#ffffff !important;
+  transform:translateX(-50%) scale(1.05);
 }
 
 .btn-container:hover{
@@ -124,6 +131,7 @@
 </body>
 
 </html>
+
 
 
 
