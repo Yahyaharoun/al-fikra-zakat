@@ -405,4 +405,82 @@ p, h1, h2, h3, h4, h5, h6, span, a, li {
 }
 .dark-mode * {
   color: var(--text-color) !important;
+
+}
+/* HEADER */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0E3B2E;
+    padding: 15px 20px;
+    color: white;
+    position: relative;
+}
+
+/* LOGO */
+.logo {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* HAMBURGER */
+.menu-toggle {
+    font-size: 28px;
+    cursor: pointer;
+    display: none;
+}
+
+/* NAVIGATION */
+.nav {
+    display: flex;
+    gap: 20px;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.nav a:hover {
+    color: #C6A85C;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        background: #111827;
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        padding: 20px 0;
+    }
+
+    .nav a {
+        padding: 15px 0;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .nav.active {
+        display: flex;
+        animation: slideDown 0.3s ease-in-out;
+    }
+}
+
+/* Animation */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
