@@ -186,3 +186,11 @@ body.dark-mode footer{
     from{opacity:0;transform:translateY(-10px);}
     to{opacity:1;transform:translateY(0);}
 }
+
+.logo img{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
