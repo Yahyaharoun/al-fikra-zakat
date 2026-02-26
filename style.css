@@ -199,6 +199,16 @@ body.dark-mode footer{
         height:35px;
     }
 }
+body{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+footer{
+    margin-top:auto;
+}
+
 
 
 
