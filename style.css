@@ -198,17 +198,21 @@ body.dark-mode footer{
         width:35px;
         height:35px;
     }
-}
-body{
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-}
+/* ===========================
+   FOOTER TOUJOURS EN BAS
+=========================== */
 
-footer{
-    margin-top:auto;
+html, body {
+    height: 100%;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 
-
-
+/* Le contenu principal prend l'espace disponible */
+main {
+    flex: 1;
+}
