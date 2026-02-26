@@ -1,15 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-  /* ===========================
-     MENU BURGER
-  =========================== */
-  const burger = document.querySelector('.burger');
-  const navLinks = document.querySelector('.nav-links');
-
-  if (burger && navLinks) {
-    burger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
 /*=========================
 Compteur anime
 =========================== */
@@ -291,6 +280,46 @@ document.querySelectorAll('[data-target]').forEach(el => {
   loadLanguage();
 
 });
+/* ===========================
+   BURGER MENU
+=========================== */
+
+const burger = document.querySelector('.burger');
+const navLinks = document.querySelector('nav ul');
+
+if (burger && navLinks) {
+    burger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    // Fermer menu après clic
+    navLinks.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+        });
+    });
+}
+
+/* ===========================
+   DARK MODE
+=========================== */
+
+const darkBtn = document.getElementById("darkModeToggle");
+
+if (darkBtn) {
+    darkBtn.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        localStorage.setItem("darkMode",
+            document.body.classList.contains("dark-mode")
+        );
+    });
+
+    // Charger état sauvegardé
+    if (localStorage.getItem("darkMode") === "true") {
+        document.body.classList.add("dark-mode");
+    }
+}
+
 
 
 
