@@ -10,18 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
     burger.addEventListener('click', () => {
       navLinks.classList.toggle('active');
     });
-  }
-const toggle = document.querySelector(".menu-toggle");
-const nav = document.querySelector(".nav");
-const themeBtn = document.getElementById("themeToggle");
-
-toggle.addEventListener("click", () => {
-  nav.classList.toggle("active");
-});
-
-themeBtn.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-});
 /*=========================
 Compteur anime
 =========================== */
@@ -303,5 +291,6 @@ document.querySelectorAll('[data-target]').forEach(el => {
   loadLanguage();
 
 });
+
 
 
