@@ -92,61 +92,6 @@ footer .footer-links a:hover{color:#1e7a33;}}
     height:3px;
     background:white;
 }
-
-/* ===========================
-   PACK SECTION
-=========================== */
-.pack-container{
-    display:flex;
-    justify-content:center;
-    gap:30px;
-    padding:40px 20px;
-    flex-wrap:wrap;
-}
-
-.card{
-    background:white;
-    padding:20px;
-    border-radius:10px;
-    width:280px;
-    text-align:center;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
-    transition:0.3s;
-}
-
-.card:hover{
-    transform:translateY(-5px);
-}
-
-.card h3{
-    margin-bottom:15px;
-}
-
-.card .btn{
-    display:inline-block;
-    padding:10px 20px;
-    border-radius:25px;
-    background:#98752a;
-    color:white;
-    border:none;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-.card .btn:hover{
-    background:#E6C76A;
-}
-
-/* ===========================
-   FOOTER
-=========================== */
-footer{
-    background:#2E1A12;
-    color:white;
-    text-align:center;
-    padding:20px;
-}
-
 /* ===========================
    DARK MODE
 =========================== */
@@ -244,4 +189,5 @@ body {
 main {
     flex: 1;
 }
+
 
