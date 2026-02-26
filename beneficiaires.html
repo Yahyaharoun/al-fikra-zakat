@@ -22,9 +22,6 @@
   text-align: center;   /* centre le bouton horizontalement */
   margin: 50px 0;       /* espace au-dessus et en-dessous du bouton */
 }
-  .note-be {
-    background-color:red;
-  }
   
 .btn-container:active {
   transform: translateX(-50%) scale(0.95);
@@ -100,18 +97,14 @@
     <p data-i18n="descriptionb1">
       Veuillez fournir les informations suivantes du beneficier:
     </p>
-<table border="2">
-    <tr>
-     <th data-i18n="nb"> Nom complet </th>
-     <th data-i18n="qb">Quartier de résidence></th>
-      <th data-i18n="sb">Situation familiale></th>
-     <th data-i18n="nt">Numéro de téléphone</th>
-    </tr>
-</table>
-
-    <p class="note-be" data-i18n="descriptionb2">
-        NB: Nous vérifions chaque proposition avant de valider l’enregistrement,
-        Toute fausse information entraînera le rejet automatique de la demande.
+<ol>
+     <li data-i18n="nb"> Nom complet </li>
+     <li data-i18n="qb">Quartier de résidence </li>
+      <li data-i18n="sb">Situation familiale </li>
+     <li data-i18n="nt">Numéro de téléphone</li>
+    </ol>
+    <p class="note-be" data-i18n="descriptionb2" style="font-size:16px; color:#FF0000; margin-bottom:10px;" >
+        NB: Nous vérifions chaque proposition avant de valider l’enregistrement, Toute fausse information entraînera le rejet automatique de la demande.
     </p>
 
     <div class="btn-container">
@@ -132,6 +125,7 @@
 </body>
 
 </html>
+
 
 
 
