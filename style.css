@@ -7,23 +7,34 @@
   --bg-light:#F6F1E8;
   --white:#ffffff;
 }
-
 /* Reset et base */
 * {margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'Roboto',sans-serif;line-height:1.6;background:#4B2E1E;color:white;}
 a{text-decoration:none;}
 img{max-width:100%;}
-* {margin: 0;padding: 0;box-sizing: border-box;}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-html,body{height: 100%;margin:0;}
-body{display: flex;flex-direction: column;}
-main{flex:1;}
+html,body{
+  height: 100%;
+  margin:0;
+}
+body{
+  display: flex;
+  flex-direction: column;
+}
+main{
+  flex:1;
+}
 
 /* Header */
 header{display:flex;justify-content:space-between;align-items:center;padding:15px 20px;background:#976b24;color:rgb(238, 232, 232);position:sticky;top:0;z-index:100;}
 .logo{display:flex;align-items:center;gap:10px;font-weight:bold;font-size:1.2em;color: #2E1A12;}
 nav ul{display:flex;list-style:none;gap:20px;}
-nav ul li a{color:#4B2E1E;font-weight:bold;}
+nav ul li a{color:#4B2E1E;;font-weight:bold;}
 .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
 .burger div{width:25px;height:3px;background:rgb(248, 248, 246);}
 
@@ -39,11 +50,10 @@ nav ul li a{color:#4B2E1E;font-weight:bold;}
 .card{background:rgb(202, 211, 100);padding:30px;border-radius:10px;box-shadow:0 8px 15px rgba(0,0,0,0.1);transition:0.3s;}
 .card:hover{transform:translateY(-5px);box-shadow:0 12px 20px rgba(0,0,0,0.2);}
 .card h3{margin-bottom:10px;color:#4B2E1E;}
-.card .btn{
-    position: fixed;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.card .btn{  position: fixed;       
+    top: 70%;             
+    left: 50%;             
+    transform: translate(-50%, -50%); 
     padding: 10px 20px;
     font-size: 14px;
     border: none;
@@ -57,8 +67,8 @@ nav ul li a{color:#4B2E1E;font-weight:bold;}
 .card .btn:hover{background:#4B2E1E;}
 .card p {font-size: 22px; font-weight: bold; margin: 15px 0;}
 
-/* Religion */
-.religion{background:#4B2E1E;padding:60px 20px;text-align:center;}
+/* Religion section */
+.religion{background:4B2E1E;padding:60px 20px;text-align:center;}
 .religion h2{margin-bottom:20px;color:#1bce2d;}
 
 /* Footer */
@@ -67,26 +77,368 @@ footer .footer-links{margin-top:10px;}
 footer .footer-links a{color:#28a745;margin:0 8px;}
 footer .footer-links a:hover{color:#1e7a33;}
 
-/* Responsive 1 */
+/* Responsive */
 @media screen and (max-width:768px){
-    nav ul{
-        position:absolute;
-        top:60px;
-        right:10px;
-        background:#4d4005;
-        width:220px;
-        flex-direction:column;
-        padding:15px;
-        display:none;
-        border-radius:8px;
-        z-index:1000;
-    }
+    nav ul{position:absolute;top:60px;right:0;background:#4d4005;width:200px;flex-direction:column;padding:20px;display:none;border-radius:5px;}
     nav ul.active{display:flex;}
     .burger{display:flex;}
     .pack-container{flex-direction:column;align-items:center;}
 }
 
-/* Responsive 2 CORRIGÉ */
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: #543a02;
+        flex-direction: column;
+        width: 200px;
+        text-align: center;
+        padding: 20px;
+        display: none;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+
+.gallery img{
+  width:250px;
+  border-radius:8px;
+  margin:10px;
+  transition:0.3s;
+}
+.gallery img:hover{
+  transform:scale(1.05);
+  box-shadow:0 8px 20px rgba(0,0,0,0.3);
+}
+.gallery{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:15px;
+}
+.gallery img{
+  width:250px;
+  border-radius:10px;
+  transition:0.3s;
+  cursor:pointer;
+}
+.gallery img:hover{
+  transform:scale(1.05);
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+.apropos-section{
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+  line-height: 1.8;
+}
+
+.apropos-section h1{
+  text-align:center;
+  margin-bottom: 30px;
+}
+
+.apropos-section h2{
+  margin-top: 30px;
+  color: #0a7f3f;
+}
+
+.apropos-section hr{
+  margin: 30px 0;
+  opacity: 0.2;
+}
+
+.engagement{
+  list-style:none;
+  padding:0;
+}
+
+.engagement li{
+  margin:10px 0;
+  font-weight:500;
+}
+
+.cta-apropos{
+  text-align:center;
+  margin-top:30px;
+}
+
+.btn{
+  background:#98752a;
+  color:white;
+  padding:12px 25px;
+  border-radius:5px;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.btn:hover{
+  background:#98752a;
+}
+/* Logo */
+.logo img{
+  height:60px;
+  width:auto;
+}
+
+/* Header */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 40px;
+  background:#ffffff;
+  box-shadow:0 4px 15px rgba(0,0,0,0.05);
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+  #btb{
+    position: fixed;        /* reste fixé */
+    top: 60%;               /* milieu vertical */
+    left: 50%;              /* milieu horizontal */
+    transform: translate(-50%, -50%); /* centre parfaitement */
+    
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 25px;
+    background: #98752a;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+.btn-fixe:hover {
+    background: #ffd700;
+    color: black;
+}
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: linear-gradient(90deg, #1e3c72, #2a5298);
+    color: white;
+}
+/* Liens */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color:#4B2E1E;
+;
+    font-weight: 500;
+    position: relative;
+    transition: 0.3s;
+}
+
+/* Effet hover stylé */
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #ffd700;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: #cfc92a;
+}
+
+/*Exemple proposition*/
+.instruction-section {
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 30px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.instruction-section h2 {
+    margin-bottom: 15px;
+}
+
+.instruction-section ul {
+    text-align: left;
+    margin: 20px 0;
+}
+
+.note {
+    margin-top: 20px;
+    color: #f7f7f7;
+    font-size: 14px;
+    font-family: 'Times New Roman', Times, serif;
+  font-size: 14pt;
+  background-color: #d80d0d;
+}
+
+.btn-container {
+    margin-top: 25px;
+}
+
+.btn-proposer {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #dad725;
+    color: rgb(5, 1, 1);
+    text-decoration: none;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+.btn-proposer:hover {
+    background: #24c21e;
+    color: rgb(2, 19, 9);
+}
+
+
+/* PROJECTS */
+.cardt{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
+.cardt{
+    background:var(--card);
+    padding:25px;
+    width:260px;
+    border-radius:14px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.cardt:hover{
+    transform:translateY(-10px);
+}
+:root{
+  --bg-light:#F6F1E8;
+  --text-light:#4B2E1E;
+  --bg-dark:#1a1a1a;
+  --text-dark:#f5f5f5;
+  --gold:#C9A227;
+}
+
+/* Mode clair */
+body{
+  background:var(--bg-light);
+  color:var(--text-light);
+  transition:0.3s;
+}
+
+/* Mode sombre */
+body.dark-mode{
+  background:var(--bg-dark);
+  color:var(--text-dark);
+}
+
+body.dark-mode header{
+  background:#111;
+}
+
+body.dark-mode footer{
+  background:#000;
+}
+
+/* Bouton */
+#themeToggle{
+  padding:6px 10px;
+  border:none;
+  cursor:pointer;
+  background:var(--gold);
+  border-radius:5px;
+}
+
+body.dark-mode {
+  --bg-color: #050c1d;
+  --text-color: #b7c7bc;
+  --card-bg: #1e293b;
+}
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+p, h1, h2, h3, h4, h5, h6, span, a, li {
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+.card, .box, .section {
+  background-color: var(--card-bg);
+  transition: background 0.3s ease;
+}
+.dark-mode * {
+  color: var(--text-color) !important;
+}
+/* HEADER */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0E3B2E;
+    padding: 15px 20px;
+    color: white;
+    position: relative;
+}
+
+/* LOGO */
+.logo {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* HAMBURGER */
+.menu-toggle {
+    font-size: 28px;
+    cursor: pointer;
+    display: none;
+}
+
+/* NAVIGATION */
+.nav {
+    display: flex;
+    gap: 20px;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.nav a:hover {
+    color: #C6A85C;
+}
+
+/* MOBILE */
 @media (max-width: 768px) {
 
     .menu-toggle {
@@ -96,19 +448,17 @@ footer .footer-links a:hover{color:#1e7a33;}
     .nav {
         position: absolute;
         top: 60px;
-        right: 10px;
-        width: 220px; /* ✅ correction ici */
-        background: #6b3f1d;
+        right: 0;
+        width: 100%;
+        background: #111827;
         flex-direction: column;
         align-items: center;
         display: none;
-        padding: 15px;
-        border-radius: 8px;
-        z-index: 1000;
+        padding: 20px 0;
     }
 
     .nav a {
-        padding: 12px 0;
+        padding: 15px 0;
         width: 100%;
         text-align: center;
         border-bottom: 1px solid rgba(255,255,255,0.1);
@@ -125,8 +475,6 @@ footer .footer-links a:hover{color:#1e7a33;}
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
-/* Mobile Menu */
 .mobile-menu {
     position: absolute;
     top: 60px;
