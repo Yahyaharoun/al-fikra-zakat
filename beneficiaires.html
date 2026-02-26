@@ -24,33 +24,37 @@
 }
   .note-be {
     background-color:red;
-   }
-  .btn-container {
-  position: fixed;
-  bottom: 80px; /* distance depuis le bas de la page */
-  left: 50%;
-  transform: translateX(-50%);
-  display: inline-block;
-  padding: 12px 25px;
-  background-color: #4B2E1E;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  z-index: 999; /* pour passer au-dessus de tout */
-}
-
-.btn-container:hover {
-  background-color: #C9A227;
-  color: #2E1A12;
-  transform: translateX(-50%) translateY(-3px);
-}
-
+  }
+  
 .btn-container:active {
   transform: translateX(-50%) scale(0.95);
 }
-  
+  /* ===========================
+   BOUTON FIXE CENTRÉ BAS
+=========================== */
+
+.btn-container{
+  position:fixed;
+  bottom:80px;           /* hauteur au-dessus du footer */
+  left:50%;
+  transform:translateX(-50%);
+  background:var(--accent);
+  color:white;
+  padding:12px 28px;
+  border-radius:30px;
+  font-weight:bold;
+  box-shadow:0 6px 15px rgba(0,0,0,0.3);
+  transition:0.3s;
+  z-index:999;
+}
+
+.btn-container:hover{
+  transform:translateX(-50%) scale(1.05);
+  opacity:0.9;
+}
+  .btn-container{
+  backdrop-filter:blur(10px);
+}
   </style>
 </head>
 <body>
@@ -120,6 +124,7 @@
 </body>
 
 </html>
+
 
 
 
