@@ -68,7 +68,7 @@ header{
   align-items:center;
   padding:15px 20px;
   background:var(--header-bg);
-  color:white;
+  color:var(--text-color);
   position:sticky;
   top:0;
   z-index:1000;
@@ -101,7 +101,7 @@ nav ul li a{
 }
 
 nav ul li a:hover{
-  color:navy;
+  color:var(--text-color);
 }
 
 /* ===========================
@@ -430,6 +430,7 @@ body.dark-mode footer{
 .h2{
   colore:white;
 }
+
 
 
 
