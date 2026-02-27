@@ -10,6 +10,49 @@
 
 <link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+   <style>
+   #bap {
+  text-align: center;   /* centre le bouton horizontalement */
+  margin: 50px 0;       /* espace au-dessus et en-dessous du bouton */
+}
+  
+#bap:active {
+  transform: translateX(-50%) scale(0.95);
+}
+  /* ===========================
+   BOUTON FIXE CENTRÉ BAS
+=========================== */
+
+#bap{
+  position:fixed;
+  bottom:80px;
+  left:50%;
+  transform:translateX(-50%);
+  background:var(--accent);
+  color:#ffffff !important;   /* Forcer texte blanc */
+  padding:12px 28px;
+  border-radius:30px;
+  font-weight:bold;
+  text-align:center;
+  box-shadow:0 6px 15px rgba(0,0,0,0.3);
+  transition:0.3s;
+  z-index:999;
+}
+
+#bap-fixed:hover{
+  background:#000000;          /* contraste fort */
+  color:#ffffff !important;
+  transform:translateX(-50%) scale(1.05);
+}
+
+#bap:hover{
+  transform:translateX(-50%) scale(1.05);
+  opacity:0.9;
+}
+  #bap{
+  backdrop-filter:blur(10px);
+}
+ </style>
 </head>
 <body>
 
@@ -114,7 +157,7 @@
   </ul>
 
   <div class="cta-apropos">
-    <a href="index.html" class="btn" data-i18n="ldp">Découvrir les Packs</a>
+    <a href="index.html" class="btn" data-i18n="ldp" id="bap">Découvrir les Packs</a>
   </div>
 
 </section>
@@ -133,3 +176,4 @@
 </body>
 
 </html>
+
