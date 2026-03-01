@@ -11,46 +11,24 @@
 <link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
    <style>
-   #bap {
-  text-align: center;   /* centre le bouton horizontalement */
-  margin: 50px 0;       /* espace au-dessus et en-dessous du bouton */
+      #bap {
+  padding: 10px 18px;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
-  
+
+#bap:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+}
+
 #bap:active {
-  transform: translateX(-50%) scale(0.95);
-}
-  /* ===========================
-   BOUTON FIXE CENTRÉ BAS
-=========================== */
-
-#bap{
-  position:fixed;
-  bottom:80px;
-  left:50%;
-  transform:translateX(-50%);
-  background:var(--accent);
-  color:#ffffff !important;   /* Forcer texte blanc */
-  padding:12px 28px;
-  border-radius:30px;
-  font-weight:bold;
-  text-align:center;
-  box-shadow:0 6px 15px rgba(0,0,0,0.3);
-  transition:0.3s;
-  z-index:999;
-}
-
-#bap-fixed:hover{
-  background:#000000;          /* contraste fort */
-  color:#ffffff !important;
-  transform:translateX(-50%) scale(1.05);
-}
-
-#bap:hover{
-  transform:translateX(-50%) scale(1.05);
-  opacity:0.9;
-}
-  #bap{
-  backdrop-filter:blur(10px);
+  transform: translateY(0);
 }
  </style>
 </head>
@@ -176,5 +154,6 @@
 </body>
 
 </html>
+
 
 
