@@ -51,6 +51,40 @@
   margin-bottom: 10px;
   color: #2e7d32;
 }
+  /* ============================
+LAYOUT BÉNÉFICIAIRES (RESPONSIVE)
+============================ */
+
+main {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  padding: 20px;
+}
+
+/* Section instructions */
+.beneficiaires {
+  flex: 1;
+}
+
+/* Liste des bénéficiaires à droite */
+#beneficiaires {
+  flex: 1;
+  max-width: 450px;
+}
+
+/* MOBILE : liste passe en bas */
+@media (max-width: 900px) {
+
+  main {
+    flex-direction: column;
+  }
+
+  #beneficiaires {
+    max-width: 100%;
+  }
+
+}
   </style>
 </head>
 <body>
@@ -154,6 +188,7 @@ document.getElementById("beneficiaires").innerHTML =
 </body>
 
 </html>
+
 
 
 
