@@ -79,6 +79,8 @@ main {
 
   #beneficiaires {
     max-width: 100%;
+  }
+}
    
 /* Hover / active commun */
 #beneficiaires:hover {
@@ -95,6 +97,7 @@ main {
     background-color: #ffffff;
     color: #111111;
   }
+}
 
  #beneficiaires:hover {
     background-color: #f5f5f5;
@@ -104,7 +107,6 @@ main {
   #beneficiaires:active {
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   }
-}
 
 /* 🌙 Mode sombre */
 @media (prefers-color-scheme: dark) {
@@ -122,7 +124,25 @@ main {
   #beneficiaires:active {
     box-shadow: 0 4px 10px rgba(0,0,0,0.7);
   }
+  #beneficiaires {
+  position: relative;
+  outline: none;
 }
+
+/* Effet visuel immédiat au hover */
+ #beneficiaires:hover {
+  outline: 2px solid rgba(59, 130, 246, 0.6); /* bleu subtil */
+  outline-offset: 2px;
+}
+
+/* 🌙 Mode sombre : glow plus doux */
+@media (prefers-color-scheme: dark) {
+   #beneficiaires:hover {
+    outline: 2px solid rgba(147, 197, 253, 0.7);
+  }
+}
+}
+ 
   </style>
 </head>
 <body>
@@ -194,6 +214,7 @@ main {
 </body>
 
 </html>
+
 
 
 
