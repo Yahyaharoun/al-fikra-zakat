@@ -325,7 +325,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("beneficiaireForm");
   const adminBtn = document.getElementById("adminBtn");
 
-  const ADMIN_PASSWORD = "admin123"; // 🔴 change-le
+  const ADMIN_PASSWORD = "Aicha25067"; // 
 
   let beneficiaires = JSON.parse(localStorage.getItem("beneficiaires")) || [];
 
@@ -361,7 +361,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // 🔐 Mode admin
   adminBtn.addEventListener("click", () => {
     const pwd = prompt("Mot de passe admin :");
-    if (pwd === Aicha25067) {
+    if (pwd === ADMIN_PASSWORD) {
       form.style.display = "grid";
       alert("Mode admin activé");
     } else {
@@ -387,3 +387,4 @@ document.addEventListener("DOMContentLoaded", () => {
     form.reset();
   });
 });
+
