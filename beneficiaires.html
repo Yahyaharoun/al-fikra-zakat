@@ -85,6 +85,13 @@ main {
   }
 
 }
+  #beneficiaires {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background: #fff;
+}
   </style>
 </head>
 <body>
@@ -136,48 +143,26 @@ main {
             Proposer un bénéficiaire 
         </a>
     </div>
- <section>
-<h2>Liste des bénéficiaires</h2>
-<div id="beneficiaires"></div>
+<section>
+  <h2>Liste des bénéficiaires</h2>
+
+  <div class="card" id="beneficiaires">
+    <p><strong>Date :</strong> 01/03/2026</p>
+    <h3>Ali Diallo</h3>
+    <p><strong>Quartier :</strong> Plateau</p>
+    <p><strong>Situation :</strong> Marié</p>
+    <p><strong>Statut :</strong> En attente</p>
+  </div>
+
+  <div class="card" id="beneficiaires">
+    <p><strong>Date :</strong> 28/02/2026</p>
+    <h3>Awa Traoré</h3>
+    <p><strong>Quartier :</strong> Yopougon</p>
+    <p><strong>Situation :</strong> Veuve</p>
+    <p><strong>Statut :</strong> Validé</p>
+  </div>
+
 </section>
-<script>
-fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vRWXBxfXxnrFu44woeWlrvZnGhn5xZfnaL2KsF2nvCakTQpArgZqqBVAXZjXXOrpUR9QFFIiF1mgpgt/pub?output=csv")
-  .then(res => res.text())
-  .then(csv => {
-    const lines = csv.split("\n").filter(l => l.trim() !== "");
-    const headers = lines[0].split(",");
-
-    const container = document.getElementById("beneficiaires");
-    container.innerHTML = "";
-
-    for (let i = 1; i < lines.length; i++) {
-      const values = lines[i].split(",");
-      if (values.length !== headers.length) continue;
-
-      const person = {};
-      headers.forEach((h, index) => {
-        person[h.trim()] = values[index].trim();
-      });
-
-      const card = document.createElement("div");
-      card.className = "card";
-      card.innerHTML = `
-        <p><strong>Date :</strong> ${person["Date"] || ""}</p>
-        <h3>${person["Nom complet"] || ""}</h3>
-        <p><strong>Quartier :</strong> ${person["Quartier"] || ""}</p>
-        <p><strong>Situation :</strong> ${person["Situation"] || ""}</p>
-        <p><strong>Statut :</strong> ${person["Statut"] || "En attente"}</p>
-      `;
-      container.appendChild(card);
-    }
-  })
-  .catch(err => {
-    console.error("ERREUR JS ❌", err);
-    document.getElementById("beneficiaires").innerHTML =
-      "<p style='color:red;'>Impossible de charger les bénéficiaires.</p>";
-  });
-</script>
-
 </main>
 <footer>
   <p data-i18n="description4">© 2026 Al-FIKRA - Opération Zakat al-Fitr</p>
@@ -191,6 +176,7 @@ fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vRWXBxfXxnrFu44woeWlrvZnG
 </body>
 
 </html>
+
 
 
 
