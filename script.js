@@ -325,26 +325,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("beneficiaireForm");
   const adminBtn = document.getElementById("adminBtn");
 
-  const ADMIN_PASSWORD = "Aicha25067"; // 
-
-  let beneficiaires = JSON.parse(localStorage.getItem("beneficiaires")) || [];
-
-  // Charger depuis data.json une seule fois
-  if (beneficiaires.length === 0) {
-    fetch("data.json")
-      .then(r => r.json())
-      .then(data => {
-        beneficiaires = data;
-        localStorage.setItem("beneficiaires", JSON.stringify(beneficiaires));
-        afficher();
-      });
-  } else {
-    afficher();
-  }
-
-  function afficher() {
+  // --- AFFICHAGE ---
+  function afficher(liste) {
     container.innerHTML = "";
-    beneficiaires.forEach(p => {
+
+    if (liste.length === 0) {
+      container.innerHTML = "<p>Aucun bénéficiaire pour le moment.</p>";
+      return;
+    }
+
+    liste.forEach(p => {
       const card = document.createElement("div");
       card.className = "card";
       card.innerHTML = `
@@ -358,18 +348,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 🔐 Mode admin
+  // --- CHARGEMENT DATA.JSON ---
+  fetch("data.json")
+    .then(r => r.json())
+    .then(data => {
+      afficher(data);
+    })
+    .catch(err => {
+      console.error(err);
+      container.innerHTML = "<p>Erreur de chargement des données</p>";
+    });
+
+  // --- MODE ADMIN SIMPLE ---
   adminBtn.addEventListener("click", () => {
-    const pwd = prompt("Mot de passe admin :");
-    if (pwd === ADMIN_PASSWORD) {
+    if (form.style.display === "none" || form.style.display === "") {
       form.style.display = "grid";
-      alert("Mode admin activé");
+      adminBtn.textContent = "🔓 Mode admin activé";
     } else {
-      alert("Mot de passe incorrect");
+      form.style.display = "none";
+      adminBtn.textContent = "🔒 Mode admin";
     }
   });
 
-  // Soumission formulaire (ADMIN uniquement)
+  // --- AJOUT LOCAL (VISUEL SEULEMENT) ---
   form.addEventListener("submit", e => {
     e.preventDefault();
 
@@ -381,10 +382,17 @@ document.addEventListener("DOMContentLoaded", () => {
       statut: document.getElementById("statut").value
     };
 
-    beneficiaires.push(nouveau);
-    localStorage.setItem("beneficiaires", JSON.stringify(beneficiaires));
-    afficher();
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <p><strong>Date :</strong> ${nouveau.date}</p>
+      <h3>${nouveau.nom}</h3>
+      <p><strong>Quartier :</strong> ${nouveau.quartier}</p>
+      <p><strong>Situation :</strong> ${nouveau.situation}</p>
+      <p><strong>Statut :</strong> ${nouveau.statut}</p>
+    `;
+
+    container.appendChild(card);
     form.reset();
   });
 });
-
