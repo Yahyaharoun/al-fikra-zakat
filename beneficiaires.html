@@ -142,16 +142,39 @@ main {
 </section>
 <script>
 fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vRWXBxfXxnrFu44woeWlrvZnGhn5xZfnaL2KsF2nvCakTQpArgZqqBVAXZjXXOrpUR9QFFIiF1mgpgt/pub?output=csv")
-  .then(res => {
-    console.log("STATUS:", res.status);
-    return res.text();
-  })
-  .then(text => {
-    console.log("CSV REÇU 👇");
-    console.log(text);
+  .then(res => res.text())
+  .then(csv => {
+    const lines = csv.split("\n").filter(l => l.trim() !== "");
+    const headers = lines[0].split(",");
+
+    const container = document.getElementById("beneficiaires");
+    container.innerHTML = "";
+
+    for (let i = 1; i < lines.length; i++) {
+      const values = lines[i].split(",");
+      if (values.length !== headers.length) continue;
+
+      const person = {};
+      headers.forEach((h, index) => {
+        person[h.trim()] = values[index].trim();
+      });
+
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <p><strong>Date :</strong> ${person["Date"] || ""}</p>
+        <h3>${person["Nom complet"] || ""}</h3>
+        <p><strong>Quartier :</strong> ${person["Quartier"] || ""}</p>
+        <p><strong>Situation :</strong> ${person["Situation"] || ""}</p>
+        <p><strong>Statut :</strong> ${person["Statut"] || "En attente"}</p>
+      `;
+      container.appendChild(card);
+    }
   })
   .catch(err => {
-    console.error("ERREUR FETCH ❌", err);
+    console.error("ERREUR JS ❌", err);
+    document.getElementById("beneficiaires").innerHTML =
+      "<p style='color:red;'>Impossible de charger les bénéficiaires.</p>";
   });
 </script>
 
@@ -168,6 +191,7 @@ fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vRWXBxfXxnrFu44woeWlrvZnG
 </body>
 
 </html>
+
 
 
 
