@@ -142,37 +142,43 @@ main {
 </section>
 
 <script>
+fetch("https://docs.google.com/spreadsheets/d/1rSYL_ZyZy3ff2lmN2s38nHuUAwTlxAmWkurASYDLr6g/pub?output=csv")
+  .then(res => res.text())
+  .then(csv => {
+    const lines = csv.split("\n").map(l => l.split(","));
+    const headers = lines[0];
+    const rows = lines.slice(1);
 
-fetch("https://docs.google.com/spreadsheets/d/1rSYL_ZyZy3ff2lmN2s38nHuUAwTlxAmWkurASYDLr6g/edit?usp=drivesdk")
-.then(response => response.json())
-.then(data => {
+    const container = document.getElementById("beneficiaires");
+    container.innerHTML = "";
 
-const container = document.getElementById("beneficiaires");
-container.innerHTML = "";
+    rows.forEach(row => {
+      if (row.length < headers.length) return;
 
-data.forEach(person => {
+      const person = {};
+      headers.forEach((h, i) => {
+        person[h.trim()] = row[i]?.trim() || "";
+      });
 
-const card = document.createElement("div");
-card.classList.add("card");
+      const card = document.createElement("div");
+      card.className = "card";
 
-card.innerHTML = `
-<p><strong>Date :</strong> ${person.Date || ""}</p>
-<h3>${person.Nom || ""}</h3>
-<p><strong>Quartier :</strong> ${person.Quartier || ""}</p>
-<p><strong>Situation :</strong> ${person.Situation || ""}</p>
-<p><strong>Statut :</strong> ${person.Statut || "En attente"}</p>
-`;
+      card.innerHTML = `
+        <p><strong>Date :</strong> ${person["Date"] || ""}</p>
+        <h3>${person["Nom complet"] || ""}</h3>
+        <p><strong>Quartier :</strong> ${person["Quartier de résidence"] || ""}</p>
+        <p><strong>Situation :</strong> ${person["Situation familiale"] || ""}</p>
+        <p><strong>Statut :</strong> ${person["Statut"] || "Valide"}</p>
+      `;
 
-container.appendChild(card);
-
-});
-
-})
-.catch(error => {
-document.getElementById("beneficiaires").innerHTML =
-"<p style='color:red;'>Impossible de charger les bénéficiaires.</p>";
-});
-
+      container.appendChild(card);
+    });
+  })
+  .catch(err => {
+    console.error(err);
+    document.getElementById("beneficiaires").innerHTML =
+      "<p style='color:red;'>Impossible de charger les bénéficiaires.</p>";
+  });
 </script>
 
 </main>
@@ -188,6 +194,7 @@ document.getElementById("beneficiaires").innerHTML =
 </body>
 
 </html>
+
 
 
 
