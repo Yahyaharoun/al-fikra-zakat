@@ -68,6 +68,8 @@ document.querySelectorAll('[data-target]').forEach(el => {
       dp2: "3500 XAF",
       dt3: "5 Personnes",
       dp3: "5800 XAF",
+      pero: "Personnalisez seulon le nombre de personnes",
+      peroo: "Personnalisez"
       lc: "Choisir",
 
       titleb1: "Vous connaissez une famille dans le besoin ? Proposez-la",
@@ -78,7 +80,7 @@ document.querySelectorAll('[data-target]').forEach(el => {
       sb: "Situation familiale",
       nt: "Téléphone",
       descriptionb2: "Toute fausse information entraînera le rejet.",
-      lib: "Proposer",
+      lib: "Proposer un beneficiaire",
 
       titlet1: "Transparence",
       descriptiont1: "Livraison 100% transparente.",
@@ -131,6 +133,8 @@ document.querySelectorAll('[data-target]').forEach(el => {
       dp2: "3500 XAF",
       dt3: "5 Persons",
       dp3: "5800 XAF",
+      pero: "Customize according to the number of people",
+      peroo: "Customize",
       lc: "Choose",
 
       titleb1: "Know a family in need?",
@@ -141,7 +145,7 @@ document.querySelectorAll('[data-target]').forEach(el => {
       sb: "Family situation",
       nt: "Phone",
       descriptionb2: "False information will be rejected.",
-      lib: "Submit",
+      lib: "Submit beneficiary",
 
       titlet1: "Transparency",
       descriptiont1: "100% transparent delivery.",
@@ -194,6 +198,8 @@ document.querySelectorAll('[data-target]').forEach(el => {
       dp2: "3500 فرنك",
       dt3: "5 أشخاص",
       dp3: "5800 فرنك",
+      pero: "خصّص حسب عدد الأشخاص",
+      peroo: "خصّص",
       lc: "اختيار",
 
       titleb1: "هل تعرف عائلة محتاجة؟",
@@ -204,7 +210,7 @@ document.querySelectorAll('[data-target]').forEach(el => {
       sb: "الحالة",
       nt: "الهاتف",
       descriptionb2: "أي معلومات خاطئة تُرفض.",
-      lib: "إرسال",
+      lib: "مستحقي الزكاة",
 
       titlet1: "الشفافية",
       descriptiont1: "توصيل شفاف 100٪.",
@@ -319,3 +325,4 @@ if (darkBtn) {
         document.body.classList.add("dark-mode");
     }
 }
+
