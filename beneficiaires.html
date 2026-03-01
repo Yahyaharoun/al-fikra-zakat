@@ -140,21 +140,19 @@ main {
 <h2>Liste des bénéficiaires</h2>
 <div id="beneficiaires"></div>
 </section>
-
 <script>
 
-fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vRWXBxfXxnrFu44woeWlrvZnGhn5xZfnaL2KsF2nvCakTQpArgZqqBVAXZjXXOrpUR9QFFIiF1mgpgt/pubhtml?gid=996038485&single=true")
+fetch("https://opensheet.elk.sh/1wE2gL2ScikXmFwPJcmhBa0aHjYTuOcR9qcqbkmCeN5Y/Liste bénéficiaire?t=" + new Date().getTime())
 .then(response => response.json())
 .then(data => {
 
 const container = document.getElementById("beneficiaires");
 container.innerHTML = "";
 
-/* UNE SEULE CARD */
+/* UNE SEULE GRANDE CARD */
 const bigCard = document.createElement("div");
 bigCard.classList.add("card");
 
-/* contenu interne */
 let content = "";
 
 data.forEach((person, index) => {
@@ -177,7 +175,7 @@ container.appendChild(bigCard);
 })
 .catch(error => {
 document.getElementById("beneficiaires").innerHTML =
-"<p style='color:red;'>Impossible de charger les bénéficiaires.</p>";
+"<p style='color:red;'>Erreur de connexion au Google Sheet.</p>";
 });
 
 </script>
@@ -195,6 +193,7 @@ document.getElementById("beneficiaires").innerHTML =
 </body>
 
 </html>
+
 
 
 
