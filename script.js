@@ -320,6 +320,46 @@ if (darkBtn) {
     }
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("dta.Json")
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Fichier JSON introuvable");
+      }
+      return response.json();
+    })
+    .then(data => {
+      const container = document.getElementById("beneficiaires");
+      if (!container) return;
+
+      container.innerHTML = "";
+
+      data.forEach(person => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        card.innerHTML = `
+          <p><strong>Date :</strong> ${person.date}</p>
+          <h3>${person.nom}</h3>
+          <p><strong>Quartier :</strong> ${person.quartier}</p>
+          <p><strong>Situation :</strong> ${person.situation}</p>
+          <p><strong>Statut :</strong> ${person.statut}</p>
+        `;
+
+        container.appendChild(card);
+      });
+    })
+    .catch(error => {
+      console.error(error);
+      const container = document.getElementById("beneficiaires");
+      if (container) {
+        container.innerHTML =
+          "<p style='color:red;'>Impossible de charger les bénéficiaires.</p>";
+      }
+    });
+});
+
+
 
 
 
