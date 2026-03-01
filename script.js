@@ -321,7 +321,7 @@ if (darkBtn) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("dta.Json")
+  fetch("data.json")
     .then(response => {
       if (!response.ok) {
         throw new Error("Fichier JSON introuvable");
@@ -358,6 +358,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 });
+
 
 
 
