@@ -142,7 +142,7 @@ main {
 </section>
 
 <script>
-fetch("https://docs.google.com/spreadsheets/d/1rSYL_ZyZy3ff2lmN2s38nHuUAwTlxAmWkurASYDLr6g/pub?output=csv")
+fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vRWXBxfXxnrFu44woeWlrvZnGhn5xZfnaL2KsF2nvCakTQpArgZqqBVAXZjXXOrpUR9QFFIiF1mgpgt/pubhtml")
   .then(res => res.text())
   .then(csv => {
     const lines = csv.split("\n").map(l => l.split(","));
@@ -194,6 +194,7 @@ fetch("https://docs.google.com/spreadsheets/d/1rSYL_ZyZy3ff2lmN2s38nHuUAwTlxAmWk
 </body>
 
 </html>
+
 
 
 
