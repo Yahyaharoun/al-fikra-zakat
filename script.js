@@ -321,46 +321,69 @@ if (darkBtn) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("data.json")
-    .then(response => {
-      if (!response.ok) {
-        throw new Error("Fichier JSON introuvable");
-      }
-      return response.json();
-    })
-    .then(data => {
-      const container = document.getElementById("beneficiaires");
-      if (!container) return;
+  const container = document.getElementById("beneficiaires");
+  const form = document.getElementById("beneficiaireForm");
+  const adminBtn = document.getElementById("adminBtn");
 
-      container.innerHTML = "";
+  const ADMIN_PASSWORD = "admin123"; // 🔴 change-le
 
-      data.forEach(person => {
-        const card = document.createElement("div");
-        card.className = "card";
+  let beneficiaires = JSON.parse(localStorage.getItem("beneficiaires")) || [];
 
-        card.innerHTML = `
-          <p><strong>Date :</strong> ${person.date}</p>
-          <h3>${person.nom}</h3>
-          <p><strong>Quartier :</strong> ${person.quartier}</p>
-          <p><strong>Situation :</strong> ${person.situation}</p>
-          <p><strong>Statut :</strong> ${person.statut}</p>
-        `;
-
-        container.appendChild(card);
+  // Charger depuis data.json une seule fois
+  if (beneficiaires.length === 0) {
+    fetch("data.json")
+      .then(r => r.json())
+      .then(data => {
+        beneficiaires = data;
+        localStorage.setItem("beneficiaires", JSON.stringify(beneficiaires));
+        afficher();
       });
-    })
-    .catch(error => {
-      console.error(error);
-      const container = document.getElementById("beneficiaires");
-      if (container) {
-        container.innerHTML =
-          "<p style='color:red;'>Impossible de charger les bénéficiaires.</p>";
-      }
+  } else {
+    afficher();
+  }
+
+  function afficher() {
+    container.innerHTML = "";
+    beneficiaires.forEach(p => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <p><strong>Date :</strong> ${p.date}</p>
+        <h3>${p.nom}</h3>
+        <p><strong>Quartier :</strong> ${p.quartier}</p>
+        <p><strong>Situation :</strong> ${p.situation}</p>
+        <p><strong>Statut :</strong> ${p.statut}</p>
+      `;
+      container.appendChild(card);
     });
+  }
+
+  // 🔐 Mode admin
+  adminBtn.addEventListener("click", () => {
+    const pwd = prompt("Mot de passe admin :");
+    if (pwd === Aicha25067) {
+      form.style.display = "grid";
+      alert("Mode admin activé");
+    } else {
+      alert("Mot de passe incorrect");
+    }
+  });
+
+  // Soumission formulaire (ADMIN uniquement)
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const nouveau = {
+      date: document.getElementById("date").value,
+      nom: document.getElementById("nom").value,
+      quartier: document.getElementById("quartier").value,
+      situation: document.getElementById("situation").value,
+      statut: document.getElementById("statut").value
+    };
+
+    beneficiaires.push(nouveau);
+    localStorage.setItem("beneficiaires", JSON.stringify(beneficiaires));
+    afficher();
+    form.reset();
+  });
 });
-
-
-
-
-
-
