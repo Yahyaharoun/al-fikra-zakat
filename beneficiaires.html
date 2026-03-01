@@ -141,43 +141,37 @@ main {
 <div id="beneficiaires"></div>
 </section>
 <script>
+fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vRWXBxfXxnrFu44woeWlrvZnGhn5xZfnaL2KsF2nvCakTQpArgZqqBVAXZjXXOrpUR9QFFIiF1mgpgt/pub?output=csv")
+  .then(res => res.text())
+  .then(csv => {
+    const result = Papa.parse(csv, {
+      header: true,
+      skipEmptyLines: true
+    });
 
-fetch("https://opensheet.elk.sh/1wE2gL2ScikXmFwPJcmhBa0aHjYTuOcR9qcqbkmCeN5Y/Liste bénéficiaire?t=" + new Date().getTime())
-.then(response => response.json())
-.then(data => {
+    const container = document.getElementById("beneficiaires");
+    container.innerHTML = "";
 
-const container = document.getElementById("beneficiaires");
-container.innerHTML = "";
+    result.data.forEach(person => {
+      const card = document.createElement("div");
+      card.className = "card";
 
-/* UNE SEULE GRANDE CARD */
-const bigCard = document.createElement("div");
-bigCard.classList.add("card");
+      card.innerHTML = `
+        <p><strong>Date :</strong> ${person["Date"] || ""}</p>
+        <h3>${person["Nom complet"] || ""}</h3>
+        <p><strong>Quartier :</strong> ${person["Quartier"] || ""}</p>
+        <p><strong>Situation :</strong> ${person["Situation"] || ""}</p>
+        <p><strong>Statut :</strong> ${person["Statut"] || "Valide"}</p>
+      `;
 
-let content = "";
-
-data.forEach((person, index) => {
-
-content += `
-<hr style="margin:15px 0;">
-<p><strong>Bénéficiaire ${index + 1}</strong></p>
-<p><strong>Date :</strong> ${person.Date || ""}</p>
-<p><strong>Nom :</strong> ${person.Nom || ""}</p>
-<p><strong>Quartier :</strong> ${person.Quartier || ""}</p>
-<p><strong>Situation :</strong> ${person.Situation || ""}</p>
-<p><strong>Statut :</strong> ${person.Statut || "Valide"}</p>
-`;
-
-});
-
-bigCard.innerHTML = content;
-container.appendChild(bigCard);
-
-})
-.catch(error => {
-document.getElementById("beneficiaires").innerHTML =
-"<p style='color:red;'>Erreur de connexion au Google Sheet.</p>";
-});
-
+      container.appendChild(card);
+    });
+  })
+  .catch(err => {
+    console.error(err);
+    document.getElementById("beneficiaires").innerHTML =
+      "<p style='color:red;'>Impossible de charger les bénéficiaires.</p>";
+  });
 </script>
 
 </main>
@@ -193,6 +187,7 @@ document.getElementById("beneficiaires").innerHTML =
 </body>
 
 </html>
+
 
 
 
