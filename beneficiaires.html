@@ -143,17 +143,18 @@ main {
 
 <script>
 
-fetch("https://opensheet.elk.sh/2PACX-1vRWXBxfXxnrFu44woeWlrvZnGhn5xZfnaL2KsF2nvCakTQpArgZqqBVAXZjXXOrpUR9QFFIiF1mgpgt/liste%20b%C3%A9n%C3%A9ficiaire?t=" + new Date().getTime())
+fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vRWXBxfXxnrFu44woeWlrvZnGhn5xZfnaL2KsF2nvCakTQpArgZqqBVAXZjXXOrpUR9QFFIiF1mgpgt/pubhtml?gid=996038485&single=true/liste bénéficiaire")
 .then(response => response.json())
 .then(data => {
 
 const container = document.getElementById("beneficiaires");
 container.innerHTML = "";
 
-/* UNE SEULE GRANDE CARD */
+/* UNE SEULE CARD */
 const bigCard = document.createElement("div");
 bigCard.classList.add("card");
 
+/* contenu interne */
 let content = "";
 
 data.forEach((person, index) => {
@@ -165,7 +166,7 @@ content += `
 <p><strong>Nom :</strong> ${person.Nom || ""}</p>
 <p><strong>Quartier :</strong> ${person.Quartier || ""}</p>
 <p><strong>Situation :</strong> ${person.Situation || ""}</p>
-<p><strong>Statut :</strong> ${person.Statut || "En attente"}</p>
+<p><strong>Statut :</strong> ${person.Statut || "Valide"}</p>
 `;
 
 });
@@ -194,6 +195,7 @@ document.getElementById("beneficiaires").innerHTML =
 </body>
 
 </html>
+
 
 
 
