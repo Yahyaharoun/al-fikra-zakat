@@ -142,43 +142,43 @@ main {
 </section>
 
 <script>
-fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vRWXBxfXxnrFu44woeWlrvZnGhn5xZfnaL2KsF2nvCakTQpArgZqqBVAXZjXXOrpUR9QFFIiF1mgpgt/pubhtml")
-  .then(res => res.text())
-  .then(csv => {
-    const lines = csv.split("\n").map(l => l.split(","));
-    const headers = lines[0];
-    const rows = lines.slice(1);
 
-    const container = document.getElementById("beneficiaires");
-    container.innerHTML = "";
+fetch("https://opensheet.elk.sh/2PACX-1vRWXBxfXxnrFu44woeWlrvZnGhn5xZfnaL2KsF2nvCakTQpArgZqqBVAXZjXXOrpUR9QFFIiF1mgpgt/liste%20b%C3%A9n%C3%A9ficiaire?t=" + new Date().getTime())
+.then(response => response.json())
+.then(data => {
 
-    rows.forEach(row => {
-      if (row.length < headers.length) return;
+const container = document.getElementById("beneficiaires");
+container.innerHTML = "";
 
-      const person = {};
-      headers.forEach((h, i) => {
-        person[h.trim()] = row[i]?.trim() || "";
-      });
+/* UNE SEULE GRANDE CARD */
+const bigCard = document.createElement("div");
+bigCard.classList.add("card");
 
-      const card = document.createElement("div");
-      card.className = "card";
+let content = "";
 
-      card.innerHTML = `
-        <p><strong>Date :</strong> ${person["Date"] || ""}</p>
-        <h3>${person["Nom complet"] || ""}</h3>
-        <p><strong>Quartier :</strong> ${person["Quartier de résidence"] || ""}</p>
-        <p><strong>Situation :</strong> ${person["Situation familiale"] || ""}</p>
-        <p><strong>Statut :</strong> ${person["Statut"] || "Valide"}</p>
-      `;
+data.forEach((person, index) => {
 
-      container.appendChild(card);
-    });
-  })
-  .catch(err => {
-    console.error(err);
-    document.getElementById("beneficiaires").innerHTML =
-      "<p style='color:red;'>Impossible de charger les bénéficiaires.</p>";
-  });
+content += `
+<hr style="margin:15px 0;">
+<p><strong>Bénéficiaire ${index + 1}</strong></p>
+<p><strong>Date :</strong> ${person.Date || ""}</p>
+<p><strong>Nom :</strong> ${person.Nom || ""}</p>
+<p><strong>Quartier :</strong> ${person.Quartier || ""}</p>
+<p><strong>Situation :</strong> ${person.Situation || ""}</p>
+<p><strong>Statut :</strong> ${person.Statut || "En attente"}</p>
+`;
+
+});
+
+bigCard.innerHTML = content;
+container.appendChild(bigCard);
+
+})
+.catch(error => {
+document.getElementById("beneficiaires").innerHTML =
+"<p style='color:red;'>Impossible de charger les bénéficiaires.</p>";
+});
+
 </script>
 
 </main>
@@ -194,6 +194,7 @@ fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vRWXBxfXxnrFu44woeWlrvZnG
 </body>
 
 </html>
+
 
 
 
