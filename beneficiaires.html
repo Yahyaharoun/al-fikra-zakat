@@ -18,47 +18,26 @@
 <link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
  <style>
-  .btn-container {
-  text-align: center;   /* centre le bouton horizontalement */
-  margin: 50px 0;       /* espace au-dessus et en-dessous du bouton */
-}
-  
-.btn-container:active {
-  transform: translateX(-50%) scale(0.95);
-}
-  /* ===========================
-   BOUTON FIXE CENTRÉ BAS
-=========================== */
-
-.btn-container{
-  position:fixed;
-  bottom:80px;
-  left:50%;
-  transform:translateX(-50%);
-  background:var(--accent);
-  color:#ffffff !important;   /* Forcer texte blanc */
-  padding:12px 28px;
-  border-radius:30px;
-  font-weight:bold;
-  text-align:center;
-  box-shadow:0 6px 15px rgba(0,0,0,0.3);
-  transition:0.3s;
-  z-index:999;
+.btn-container {
+  text-align: center;
+  margin: 40px 0;
 }
 
-.btn-container-fixed:hover{
-  background:#000000;          /* contraste fort */
-  color:#ffffff !important;
-  transform:translateX(-50%) scale(1.05);
+.btn-container {
+  display: inline-block;
+  background: #2e7d32;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
-.btn-container:hover{
-  transform:translateX(-50%) scale(1.05);
-  opacity:0.9;
+.btn-container:hover {
+  background: #1b5e20;
+  transform: scale(1.05);
 }
-  .btn-container{
-  backdrop-filter:blur(10px);
-  }
    .card {
   background: #ffffff;
   padding: 20px;
@@ -111,11 +90,11 @@
       Veuillez fournir les informations suivantes du beneficier:
     </p>
 <ol type="A">
-     <li data-i18n="nb"> 1-Nom complet </li>
-     <li data-i18n="qb">2-Quartier de résidence </li>
-      <li data-i18n="sb">3-Situation familiale </li>
-     <li data-i18n="nt">4-Numéro de téléphone</li>
-    </ol>
+  <li>Nom complet</li>
+  <li>Quartier de résidence</li>
+  <li>Situation familiale</li>
+  <li>Numéro de téléphone</li>
+</ol>
     <p class="note-be" data-i18n="descriptionb2" style="font-size:16px; color:#FF0000; margin-bottom:10px;" >Nous vérifions chaque proposition avant de valider l’enregistrement, Toute fausse information entraînera le rejet automatique de la demande. </p>
 
     <div class="btn-container">
@@ -123,33 +102,45 @@
             Proposer un bénéficiaire 
         </a>
     </div>
-   <section>
-  <h2>Liste des bénéficiaires</h2>
-  <div id="beneficiaires"></div>
+ <section>
+<h2>Liste des bénéficiaires</h2>
+<div id="beneficiaires"></div>
 </section>
 
 <script>
-fetch("https://https://l.facebook.com/l.php?u=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1rSYL_ZyZy3ff2lmN2s38nHuUAwTlxAmWkurASYDLr6g%2Fedit%3Fusp%3Ddrivesdk%26fbclid%3DIwZXh0bgNhZW0CMTAAYnJpZBExQ1k1aDFDc1JXSFlldXY2cXNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR53zQqcBeqTLFy6rZqTT5YxToMW5fJ-6QctQXgHqNbqu5tDQlsTReN_cjH95Q_aem_F6VNvDspUrRNa6ZzAYghtA&h=AT5eRaOGZTDO7w7VpZuvbTNocY_iNajBfQfT7rDJawNxODKn6Mkyc_u9a66mb8nEdZn4IPDP5SfwsAiyRFsJgwSz09YzA_5OtbZuF6HKMGHykXWCdA5_3hLJEAQuESB9gogFLw")
-  .then(response => response.json())
-  .then(data => {
-    const container = document.getElementById("beneficiaires");
 
-    data.forEach(person => {
-      const card = document.createElement("div");
-      card.classList.add("card");
+fetch("https://opensheet.elk.sh/https:/1rSYL_ZyZy3ff2lmN2s38nHuUAwTlxAmWkurASYDLr6g/edit?usp=drivesdk/liste bénéficiaire")
+.then(response => response.json())
+.then(data => {
 
-      card.innerHTML = `
-       <p><strong>Date :</strong> ${person.Date}</p>
-        <h3>${person.Nom}</h3>
-        <p><strong>Quartier :</strong> ${person.Quartier}</p>
-        <p><strong>Situation :</strong> ${person.Situation}</p>
-        <p><strong>Statut :</strong> ${person.Statut}</p>
-      `;
+const container = document.getElementById("beneficiaires");
+container.innerHTML = "";
 
-      container.appendChild(card);
-    });
-  });
+data.forEach(person => {
+
+const card = document.createElement("div");
+card.classList.add("card");
+
+card.innerHTML = `
+<p><strong>Date :</strong> ${person.Date || ""}</p>
+<h3>${person.Nom || ""}</h3>
+<p><strong>Quartier :</strong> ${person.Quartier || ""}</p>
+<p><strong>Situation :</strong> ${person.Situation || ""}</p>
+<p><strong>Statut :</strong> ${person.Statut || "En attente"}</p>
+`;
+
+container.appendChild(card);
+
+});
+
+})
+.catch(error => {
+document.getElementById("beneficiaires").innerHTML =
+"<p style='color:red;'>Impossible de charger les bénéficiaires.</p>";
+});
+
 </script>
+
 </main>
 <footer>
   <p data-i18n="description4">© 2026 Al-FIKRA - Opération Zakat al-Fitr</p>
@@ -163,6 +154,7 @@ fetch("https://https://l.facebook.com/l.php?u=https%3A%2F%2Fdocs.google.com%2Fsp
 </body>
 
 </html>
+
 
 
 
