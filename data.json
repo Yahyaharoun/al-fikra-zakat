@@ -4,19 +4,3 @@
   "totalPacks": 50
 
 }
-[
-  {
-    "date": "01/03/2026",
-    "nom": "Ali Diallo",
-    "quartier": "Plateau",
-    "situation": "Marié",
-    "statut": "En attente"
-  },
-  {
-    "date": "28/02/2026",
-    "nom": "Awa Traoré",
-    "quartier": "Yopougon",
-    "situation": "Veuve",
-    "statut": "Validé"
-  }
-]
