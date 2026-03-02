@@ -68,6 +68,8 @@ document.addEventListener("DOMContentLoaded", function () {
       dp2: "3500 XAF",
       dt3: "5 Personnes",
       dp3: "5800 XAF",
+      pero: "Personnalisez seulons le nombre de personnes",
+      peroo: "personnalisez",
       lc: "Choisir",
       titleb1: "Vous connaissez une famille dans le besoin ? Proposez-la",
       titleb2: "📌 Instructions",
@@ -121,6 +123,8 @@ document.addEventListener("DOMContentLoaded", function () {
       dp2: "3500 XAF",
       dt3: "5 Persons",
       dp3: "5800 XAF",
+      pero: "Customize according to the number of people",
+      peroo: "Customize",
       lc: "Choose",
       titleb1: "Know a family in need?",
       titleb2: "📌 Instructions",
@@ -174,6 +178,8 @@ document.addEventListener("DOMContentLoaded", function () {
       dp2: "3500 فرنك",
       dt3: "5 أشخاص",
       dp3: "5800 فرنك",
+      pero: "تخصيص حسب عدد الأشخاص",
+      peroo: "خصّص",
       lc: "اختيار",
       titleb1: "هل تعرف عائلة محتاجة؟",
       titleb2: "📌 تعليمات",
@@ -277,3 +283,4 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 });
+
