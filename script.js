@@ -68,8 +68,6 @@ document.querySelectorAll('[data-target]').forEach(el => {
       dp2: "3500 XAF",
       dt3: "5 Personnes",
       dp3: "5800 XAF",
-      pero: "Personnalisez seulon le nombre de personnes",
-      peroo: "Personnalisez"
       lc: "Choisir",
 
       titleb1: "Vous connaissez une famille dans le besoin ? Proposez-la",
@@ -133,8 +131,6 @@ document.querySelectorAll('[data-target]').forEach(el => {
       dp2: "3500 XAF",
       dt3: "5 Persons",
       dp3: "5800 XAF",
-      pero: "Customize according to the number of people",
-      peroo: "Customize",
       lc: "Choose",
 
       titleb1: "Know a family in need?",
@@ -198,8 +194,6 @@ document.querySelectorAll('[data-target]').forEach(el => {
       dp2: "3500 فرنك",
       dt3: "5 أشخاص",
       dp3: "5800 فرنك",
-      pero: "خصّص حسب عدد الأشخاص",
-      peroo: "خصّص",
       lc: "اختيار",
 
       titleb1: "هل تعرف عائلة محتاجة؟",
